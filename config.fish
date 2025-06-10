@@ -6,11 +6,14 @@ if status is-interactive
     abbr --add y xsel -b # [Y]ank to clipboard
     abbr --add p xsel -ob # [P]aste from clipboard
     abbr --add nv nvim
+    abbr --add vi nvim
+    abbr --add vim nvim
     abbr --add lg lazygit
     abbr --add tp trash-put
     abbr --add tm tmux
     abbr --add tmnw tmux new-win
-    
+    abbr --add xo xdg-open .
+
     function multicd
         echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
     end
@@ -35,4 +38,10 @@ if status is-interactive
     # C-F autocomplete
     bind -M visual \cF end-of-line
     bind -M insert \cF end-of-line
+
+end
+function fish_right_prompt
+  set_color $fish_color_autosuggestion 2> /dev/null; or set_color 555
+  date "+%Y-%m-%d %H:%M:%S"
+  set_color normal
 end
